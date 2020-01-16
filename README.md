@@ -1,2 +1,2 @@
-# php-stackexchange-search
- Easil search sites on the StackExchange network
+# PHP StackExchange Search
+Easily search sites on the StackExchange network
