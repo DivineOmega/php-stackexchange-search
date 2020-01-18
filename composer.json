@@ -10,6 +10,10 @@
         }
     ],
     "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.0||^8.0",
+        "php-coveralls/php-coveralls": "^2.0"
+    },
     "autoload": {
         "psr-4": {
             "DivineOmega\\StackExchangeSearch\\": "src/"

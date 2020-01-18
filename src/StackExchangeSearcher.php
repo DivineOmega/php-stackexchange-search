@@ -3,7 +3,6 @@
 namespace DivineOmega\StackExchangeSearch;
 
 use DivineOmega\StackExchangeSearch\Interfaces\SearcherInterface;
-use Exception;
 
 class StackExchangeSearcher implements SearcherInterface
 {
@@ -20,7 +19,7 @@ class StackExchangeSearcher implements SearcherInterface
     {
         $url = $this->buildUrl($query);
 
-        $response = file_get_contents($url);
+        $response = gzdecode(file_get_contents($url));
         $decodedResponse = json_decode($response, true);
 
         $results = [];
@@ -28,15 +27,18 @@ class StackExchangeSearcher implements SearcherInterface
         $score = count($decodedResponse['items']);
 
         foreach ($decodedResponse['items'] as $item) {
-            $results[] = new StackExchangeSearchResult($item, $relevance);
+            $results[] = new StackExchangeSearchResult($item, $score);
+            $score--;
         }
+
+        return $results;
     }
 
     private function buildUrl(string $query): string
     {
         return str_replace(
             ['[QUERY]', '[SITE]'],
-            [$query, $this->site],
+            [urlencode($query), urlencode($this->site)],
             self::URL
         );
     }
