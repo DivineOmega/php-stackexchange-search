@@ -13,7 +13,7 @@ class StackExchangeSearchResult implements SearchResultInterface
 
     public function __construct(array $item, int $score)
     {
-        $this->title = $item['title'];
+        $this->title = html_entity_decode($item['title'], ENT_QUOTES | ENT_HTML5);
         $this->url = $item['link'];
         $this->description = 'Posted by '.$item['owner']['display_name'].' and tagged as '.implode(', ', $item['tags']);
         $this->score = $score;
