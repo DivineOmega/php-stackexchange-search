@@ -2,7 +2,7 @@
 
 namespace DivineOmega\StackExchangeSearch;
 
-use DivineOmega\StackExchangeSearch\Interfaces\SearcherInterface;
+use DivineOmega\BaseSearch\Interfaces\SearcherInterface;
 
 class StackExchangeSearcher implements SearcherInterface
 {
