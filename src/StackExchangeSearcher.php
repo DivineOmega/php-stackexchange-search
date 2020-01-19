@@ -24,11 +24,11 @@ class StackExchangeSearcher implements SearcherInterface
 
         $results = [];
 
-        $score = count($decodedResponse['items']);
+        $count = count($decodedResponse['items']);
 
-        foreach ($decodedResponse['items'] as $item) {
+        foreach ($decodedResponse['items'] as $index => $item) {
+            $score = ($count - $index) / $count;
             $results[] = new StackExchangeSearchResult($item, $score);
-            $score--;
         }
 
         return $results;

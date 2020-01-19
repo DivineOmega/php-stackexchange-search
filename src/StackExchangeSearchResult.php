@@ -11,7 +11,7 @@ class StackExchangeSearchResult implements SearchResultInterface
     private $description;
     private $score;
 
-    public function __construct(array $item, int $score)
+    public function __construct(array $item, float $score)
     {
         $this->title = html_entity_decode($item['title'], ENT_QUOTES | ENT_HTML5);
         $this->url = $item['link'];
@@ -34,7 +34,7 @@ class StackExchangeSearchResult implements SearchResultInterface
         return $this->url;
     }
 
-    public function getScore(): string
+    public function getScore(): float
     {
         return $this->score;
     }
