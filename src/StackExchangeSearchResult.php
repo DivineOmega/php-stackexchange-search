@@ -15,13 +15,13 @@ class StackExchangeSearchResult implements SearchResultInterface
     {
         $this->title = html_entity_decode($item['title'], ENT_QUOTES | ENT_HTML5);
         $this->url = $item['link'];
-        
+
         if (isset($item['owner']['display_name'])) {
             $this->description = 'Posted by '.$item['owner']['display_name'].' and tagged as '.implode(', ', $item['tags']);
         } else {
             $this->description = 'Tagged as '.implode(', ', $item['tags']);
         }
-
+        
         $this->score = $score;
     }
 
