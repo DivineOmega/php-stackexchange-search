@@ -1,5 +1,7 @@
 <?php
 
+namespace DivineOmega\StackExchangeSearch\Tests;
+
 use DivineOmega\BaseSearch\Interfaces\SearchResultInterface;
 use DivineOmega\StackExchangeSearch\Enums\Sites;
 use DivineOmega\StackExchangeSearch\StackExchangeSearcher;
@@ -17,8 +19,8 @@ final class SearchTest extends TestCase
         $this->assertGreaterThanOrEqual(1, count($results));
 
         foreach($results as $result) {
-            $this->assertTrue($result instanceof StackExchangeSearchResult);
-            $this->assertTrue($result instanceof SearchResultInterface);
+            $this->assertInstanceOf(StackExchangeSearchResult::class, $result);
+            $this->assertInstanceOf(SearchResultInterface::class, $result);
 
             $this->assertGreaterThanOrEqual(0, $result->getScore());
             $this->assertLessThanOrEqual(1, $result->getScore());
